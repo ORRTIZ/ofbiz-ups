@@ -20,5 +20,131 @@
 -->
 
 <entity-engine-xml>
-
+    
+    <SystemProperty
+    description="UPS configuration indicator" 
+    systemPropertyId="shipment.ups.shipping" 
+    systemPropertyValue="N" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Connection URL" 
+    systemPropertyId="shipment.ups.connect.url" 
+    systemPropertyValue="https://wwwcie.ups.com/ups.app/xml" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Connection timeout in seconds" 
+    systemPropertyId="shipment.ups.connect.timeout" 
+    systemPropertyValue="60" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Shipper Number" 
+    systemPropertyId="shipment.ups.shipper.number" 
+    systemPropertyValue="12345E" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Bill Shipper Account Number" 
+    systemPropertyId="shipment.ups.bill.shipper.account.number" 
+    systemPropertyValue="12345E" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS XPCI Access License Number" 
+    systemPropertyId="shipment.ups.access.license.number" 
+    systemPropertyValue="TEST262223144CAT" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS XPCI Access User ID" 
+    systemPropertyId="shipment.ups.access.user.id" 
+    systemPropertyValue="REG111111" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS XPCI Access Password" 
+    systemPropertyId="shipment.ups.access.password" 
+    systemPropertyValue="REG111111" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Certification Info" 
+    systemPropertyId="shipment.ups.save.certification.info" 
+    systemPropertyValue="true" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Certification Path" 
+    systemPropertyId="shipment.ups.save.certification.path" 
+    systemPropertyValue="${sys:getProperty('ofbiz.home')}/runtime/output/upscert" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Shipper Default Pickup Type" 
+    systemPropertyId="shipment.ups.shipper.pickup.type" 
+    systemPropertyValue="06" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Customer Classification" 
+    systemPropertyId="shipment.ups.customerclassification" 
+    systemPropertyValue="03" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Max Weight Estimate to split into packages" 
+    systemPropertyId="shipment.ups.max.estimate.weight" 
+    systemPropertyValue="90" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Min Weight Estimate of packages" 
+    systemPropertyId="shipment.ups.min.estimate.weight" 
+    systemPropertyValue=".1" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS Allow CoD" 
+    systemPropertyId="shipment.ups.cod.allowCOD" 
+    systemPropertyValue="true" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS CoD Surcharge" 
+    systemPropertyId="shipment.ups.cod.surcharge.amount" 
+    systemPropertyValue="9" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS CoD Surcharge Currency UomId" 
+    systemPropertyId="shipment.ups.cod.surcharge.currencyUomId" 
+    systemPropertyValue="USD" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS CoD Surcharge Application" 
+    systemPropertyId="shipment.ups.cod.surcharge.applyToPackages" 
+    systemPropertyValue="first" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS CoD Funds Code" 
+    systemPropertyId="shipment.ups.cod.codFundsCode" 
+    systemPropertyValue="0" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS ReturnLabel Memo" 
+    systemPropertyId="shipment.ups.default.returnLabel.memo" 
+    systemPropertyValue="UPS Shipment Return Memo" 
+    systemResourceId="ups"/>
+    
+    <SystemProperty
+    description="UPS ReturnLabel Subject" 
+    systemPropertyId="shipment.ups.default.returnLabel.subject" 
+    systemPropertyValue="UPS Shipment Return Label" 
+    systemResourceId="ups"/>
+    
 </entity-engine-xml>
