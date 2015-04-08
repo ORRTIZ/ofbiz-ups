@@ -26,6 +26,7 @@
          elements found in the common-controller.xml file. -->
          
     <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
+    <include location="component://product/webapp/facility/WEB-INF/controller.xml"/>
 
     <description>UPS Integration Component Site Configuration File</description>
 
@@ -77,13 +78,61 @@
         <response name="success" type="view" value="systemproperties"/>
     </request-map>
     
+    <!-- Shipment Gateway Config --> 
+    <request-map uri="FindShipmentGatewayConfig">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="FindShipmentGatewayConfig"/>
+    </request-map>
+    <request-map uri="EditShipmentGatewayConfig">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="EditShipmentGatewayConfig"/>
+    </request-map>
+    <request-map uri="UpdateShipmentGatewayConfig">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateShipmentGatewayConfigUps"/>
+        <response name="success" type="view" value="EditShipmentGatewayConfig"/>
+        <response name="error" type="view" value="EditShipmentGatewayConfig"/>
+    </request-map>
+    
+    <!-- Carrier actions -->
+    <request-map uri="confirm">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="upsShipmentConfirm"/>
+        <response name="success" type="cross-redirect" value="facility/control/EditShipmentRouteSegments"><redirect-parameter name="shipmentId"/></response>
+        <response name="error" type="cross-redirect" value="facility/control/EditShipmentRouteSegments"><redirect-parameter name="shipmentId"/></response>
+    </request-map>
+    <request-map uri="accept">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="upsShipmentAccept"/>
+        <response name="success" type="cross-redirect" value="facility/control/EditShipmentRouteSegments"><redirect-parameter name="shipmentId"/></response>
+        <response name="error" type="cross-redirect" value="facility/control/EditShipmentRouteSegments"><redirect-parameter name="shipmentId"/></response>
+    </request-map>
+    <request-map uri="void">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="upsVoidShipment"/>
+        <response name="success" type="cross-redirect" value="facility/control/EditShipmentRouteSegments"><redirect-parameter name="shipmentId"/></response>
+        <response name="error" type="cross-redirect" value="facility/control/EditShipmentRouteSegments"><redirect-parameter name="shipmentId"/></response>
+    </request-map>
+    <request-map uri="track">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="upsTrackShipment"/>
+        <response name="success" type="cross-redirect" value="facility/control/EditShipmentRouteSegments"><redirect-parameter name="shipmentId"/></response>
+        <response name="error" type="cross-redirect" value="facility/control/EditShipmentRouteSegments"><redirect-parameter name="shipmentId"/></response>
+    </request-map>
+    
     <!-- View Mappings -->
     <view-map name="main" type="screen" page="component://ups/widget/ups-Screens.xml#main"/>
     
     <!-- Configuration -->
-    <view-map name="configuration" type="screen" page="component://fedex/widget/ConfigurationScreens.xml#Configuration"/>
-    <view-map name="systemproperties" type="screen" page="component://fedex/widget/ConfigurationScreens.xml#SystemProperties"/>
-    <view-map name="newsystemproperty" type="screen" page="component://fedex/widget/ConfigurationScreens.xml#NewSystemProperty"/>
-    <view-map name="editsystemproperty" type="screen" page="component://fedex/widget/ConfigurationScreens.xml#EditSystemProperty"/>
+    <view-map name="configuration" type="screen" page="component://ups/widget/ConfigurationScreens.xml#Configuration"/>
+    <view-map name="systemproperties" type="screen" page="component://ups/widget/ConfigurationScreens.xml#SystemProperties"/>
+    <view-map name="newsystemproperty" type="screen" page="component://ups/widget/ConfigurationScreens.xml#NewSystemProperty"/>
+    <view-map name="editsystemproperty" type="screen" page="component://ups/widget/ConfigurationScreens.xml#EditSystemProperty"/>
+    
+    <!-- Shipment Gateway Config -->
+    <view-map name="FindShipmentGatewayConfig" page="component://ups//widget/ShipmentGatewayConfigScreens.xml#FindShipmentGatewayConfig" type="screen"/>
+    <view-map name="EditShipmentGatewayConfig" page="component://ups//widget/ShipmentGatewayConfigScreens.xml#EditShipmentGatewayConfig" type="screen"/>
+    <view-map name="FindShipmentGatewayConfigTypes" page="component://ups//widget/ShipmentGatewayConfigScreens.xml#FindShipmentGatewayConfigTypes" type="screen"/>
+    <view-map name="EditShipmentGatewayConfigType" page="component://ups//widget/ShipmentGatewayConfigScreens.xml#EditShipmentGatewayConfigType" type="screen"/>
     
 </site-conf>
