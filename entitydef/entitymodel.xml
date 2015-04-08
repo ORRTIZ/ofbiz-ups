@@ -26,7 +26,37 @@
     <!-- ========================================================= -->
     <title>Entity of UPS Integration Component</title>
     <description>None</description>
-    <copyright></copyright>
-    <version></version>
+    <copyright>Apache OFBiz</copyright>
+    <version>1.0</version>
+    
+    <entity entity-name="ShipmentGatewayUps"
+            package-name="org.ofbiz.shipment.shipment"
+            title="UPS Shipment Gateway Configuration">
+      <field name="shipmentGatewayConfigId" type="id-ne"></field>
+      <field name="connectUrl" type="value"><description>UPS Connection URL</description></field>
+      <field name="connectTimeout" type="numeric"><description>Timeout in seconds</description></field>
+      <field name="shipperNumber" type="value"><description>UPS Shipper Number</description></field>
+      <field name="billShipperAccountNumber" type="value"><description>UPS Bill Shipper Account Number</description></field>
+      <field name="accessLicenseNumber" type="value" encrypt="true"><description>UPS XPCI Access License Number</description></field>
+      <field name="accessUserId" type="value" encrypt="true"><description>UPS XPCI Access User ID</description></field>
+      <field name="accessPassword" type="value" encrypt="true"><description>UPS XPCI Access Password</description></field>
+      <field name="saveCertInfo" type="short-varchar"><description>Setting to save files needed for UPS certification (true|false)</description></field>
+      <field name="saveCertPath" type="value"><description>UPS file certificate path</description></field>
+      <field name="shipperPickupType" type="short-varchar"><description>Shipper Default Pickup Type</description></field>
+      <field name="customerClassification" type="short-varchar"><description>Customer Classification</description></field>
+      <field name="maxEstimateWeight" type="fixed-point"><description>Estimate split into packages</description></field>
+      <field name="minEstimateWeight" type="fixed-point"><description>Minimum weight for a package</description></field>
+      <field name="codAllowCod" type="value"><description>All shipment package items are from orders which have been fully paid via EXT_COD</description></field>
+      <field name="codSurchargeAmount" type="fixed-point"><description>Surcharge amount</description></field>
+      <field name="codSurchargeCurrencyUomId" type="short-varchar"><description>Surcharge currency</description></field>
+      <field name="codSurchargeApplyToPackage" type="short-varchar"><description>Surcharge amount will be applied to each shipment package</description></field>
+      <field name="codFundsCode" type="short-varchar"><description>The code that indicates the type of funds used for the COD payment</description></field>
+      <field name="defaultReturnLabelMemo" type="value"><description>Return label email memo</description></field>
+      <field name="defaultReturnLabelSubject" type="value"><description>Return label subject</description></field>
+      <prim-key field="shipmentGatewayConfigId"/>
+      <relation type="one" fk-name="SGUPS_SGC" rel-entity-name="ShipmentGatewayConfig">
+        <key-map field-name="shipmentGatewayConfigId"/>
+      </relation>
+    </entity>
 
 </entitymodel>
