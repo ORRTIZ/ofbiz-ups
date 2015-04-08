@@ -21,4 +21,72 @@
 
 <entity-engine-xml>
 
+    <ShipmentGatewayConfigType shipmentGatewayConfTypeId="ups" hasTable="N" description="UPS Shipment Gateway"/>
+    <ShipmentGatewayConfig shipmentGatewayConfigId="ups" shipmentGatewayConfTypeId="ups" description="UPS Config"/>
+    <ShipmentGatewayUps shipmentGatewayConfigId="ups" connectUrl="https://wwwcie.ups.com/ups.app/xml" connectTimeout="60" shipperNumber="12345E" billShipperAccountNumber="12345E" accessLicenseNumber="TEST262223144CAT" accessUserId="REG111111" accessPassword="REG111111" saveCertInfo="true" saveCertPath="${sys:getProperty('ofbiz.home')}/runtime/output/upscert" shipperPickupType="06" customerClassification="03" maxEstimateWeight="90" minEstimateWeight="0.1" codAllowCod="true" codSurchargeAmount="9" codSurchargeCurrencyUomId="USD" codSurchargeApplyToPackage="first" codFundsCode="0" defaultReturnLabelMemo="UPS Shipment Return Memo" defaultReturnLabelSubject="UPS Shipment Return Label"/>
+    
+    <Party partyId="ups" partyTypeId="PARTY_GROUP"/>
+    <PartyGroup partyId="ups" groupName="UPS"/>
+    <PartyRole partyId="ups" roleTypeId="CARRIER" fromDate="2001-01-01 00:00:00.0"/>
+    <PartyRole partyId="ups" roleTypeId="SUPPLIER" fromDate="2001-01-01 00:00:00.0"/>
+    <PartyRole partyId="ups" roleTypeId="VENDOR" fromDate="2001-01-01 00:00:00.0"/>
+    <PartyRole partyId="ups" roleTypeId="BILL_FROM_VENDOR" fromDate="2001-01-01 00:00:00.0"/>
+    <PartyRole partyId="ups" roleTypeId="SHIP_FROM_VENDOR" fromDate="2001-01-01 00:00:00.0"/>
+    
+    <!-- UPS shipping options -->
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="STANDARD" sequenceNumber="01" carrierServiceCode="11"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="THIRD_DAY_AIR_SEL" sequenceNumber="02" carrierServiceCode="12"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="SECOND_DAY_AIR" sequenceNumber="03" carrierServiceCode="02"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="SECOND_DAY_AIR_AM" sequenceNumber="04" carrierServiceCode="59"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="NEXT_DAY_AIR_SA" sequenceNumber="05" carrierServiceCode="13"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="NEXT_DAY_AIR" sequenceNumber="06" carrierServiceCode="01"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="NEXT_DAY_AIR_AM" sequenceNumber="07" carrierServiceCode="14"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="WORLDWIDE_EXPRESS" sequenceNumber="08" carrierServiceCode="07"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="WORLDWIDE_EXPR_PLUS" sequenceNumber="09" carrierServiceCode="54"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="WORLDWIDE_EXPEDITED" sequenceNumber="10" carrierServiceCode="08"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="SAVER" sequenceNumber="11" carrierServiceCode="65"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND" sequenceNumber="12" carrierServiceCode="03"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="AIR" sequenceNumber="13" carrierServiceCode="02"/>
+    <CarrierShipmentMethod partyId="ups" roleTypeId="CARRIER" shipmentMethodTypeId="THIRD_DAY" sequenceNumber="14" carrierServiceCode="THIRDDAY"/>
+    <!-- End of UPS Data -->
+    
+    <CustomMethod customMethodId="SHIP_EST_ups"      customMethodTypeId="SHIP_EST" customMethodName="upsRateEstimate"   description="UPS rate estimate"/>
+    
+    <ProductStoreShipmentMeth 
+        productStoreShipMethId="ups-GROUND" 
+        productStoreId="PRODUCTSTOREID" 
+        partyId="ups" 
+        includeNoChargeItems="N" 
+        allowUspsAddr="N" 
+        requireUspsAddr="N" 
+        roleTypeId="CARRIER" 
+        shipmentMethodTypeId="GROUND" 
+        sequenceNumber="3"
+        />
+        
+    <ProductStoreShipmentMeth 
+        productStoreShipMethId="ups-AIR" 
+        productStoreId="PRODUCTSTOREID" 
+        partyId="ups" 
+        includeNoChargeItems="N" 
+        allowUspsAddr="N" 
+        requireUspsAddr="N" 
+        roleTypeId="CARRIER" 
+        shipmentMethodTypeId="AIR" 
+        sequenceNumber="2"
+        />
+        
+    <ProductStoreShipmentMeth 
+        productStoreShipMethId="ups-NEXT_DAY" 
+        productStoreId="PRODUCTSTOREID" 
+        partyId="ups" 
+        includeNoChargeItems="N" 
+        allowUspsAddr="N" 
+        requireUspsAddr="N" 
+        roleTypeId="CARRIER" 
+        shipmentMethodTypeId="NEXT_DAY" 
+        sequenceNumber="1"
+        />
+    
+
 </entity-engine-xml>
