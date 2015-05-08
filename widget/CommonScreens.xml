@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -21,7 +20,6 @@
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
-
     <screen name="main-decorator">
         <section>
             <actions>
@@ -60,6 +58,9 @@
                             <condition>
                                 <if-has-permission permission="${activeApp}" action="_ADMIN"/>
                             </condition>
+                            <actions>
+                                <script location="component://ups/script/org/ofbiz/carrier/CarrierGateway.groovy"/>
+                            </actions>
                             <widgets>
                                 <include-menu name="ConfigurationTabBar" location="component://${activeApp}/widget/ConfigurationMenus.xml"/>
                                 <include-menu name="ConfigurationSubTabBar" location="component://${activeApp}/widget/ConfigurationMenus.xml"/>
